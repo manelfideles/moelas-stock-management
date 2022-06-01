@@ -1,16 +1,7 @@
+const { getDrinkList } = require('../utils')
 const { db, storage } = require('../firebase-config');
 var express = require('express');
 var router = express.Router();
-
-function getDrinkList(doc) {
-    const drinks = Object
-        .entries(doc['_fieldsProto'])
-        .map((drink) => { return { 'name': drink[0], 'quantity': drink[1]['integerValue'] } })
-    return {
-        'name': doc.id,
-        'drinks': drinks,
-    }
-}
 
 /* GET cocktails listing. */
 router.get('/', async (req, res, next) => {
