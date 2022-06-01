@@ -1,0 +1,15 @@
+.item {
+    display: flex;
+    align-items: center;
+    width: 20em;
+    justify-content: space-between;
+}
+
+.actionBtn {
+    border: none;
+    background-color: none;
+}
+
+.actionBtn:hover {
+    cursor: pointer;
+}

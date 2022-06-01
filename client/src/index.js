@@ -1,7 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import App from './pages/App';
+import Drink from './pages/Drink';
+import Cocktail from './pages/Cocktail';
 
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -15,7 +18,13 @@ root.render(
     <GeistProvider>
       <CssBaseline />
       <Navbar />
-      <App />
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<App />} />
+          <Route path='/drinks/:drinkName' element={<Drink />} />
+          <Route path='/cocktails/:cocktailName' element={<Cocktail />} />
+        </Routes>
+      </BrowserRouter>
       <Footer />
     </GeistProvider>
   </React.StrictMode>

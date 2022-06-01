@@ -1,0 +1,21 @@
+.beverages {
+    display: flex;
+    flex-direction: column;
+}
+
+.beverages>p {
+    font-size: 1.5em;
+    text-align: center;
+    font-weight: bolder;
+    text-decoration: underline;
+}
+
+.list {
+    margin-top: 2em;
+}
+
+.beverages:first-child {
+    border-right: 2px solid black;
+    margin-right: 3em;
+    padding-right: 3em;
+}
