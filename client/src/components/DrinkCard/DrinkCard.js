@@ -3,8 +3,12 @@ import { formatBeverageName } from '../../utils';
 import styles from './DrinkCard.module.css';
 import bottle from '../../assets/icons/bottle.svg';
 import { Card, Image, Text, Button } from '@geist-ui/core';
+import { useNavigate } from 'react-router-dom';
 
 export default function DrinkCard({ name, quantity, imageUrl }) {
+
+    const navigate = useNavigate();
+
     return (
         <div className={styles.drinkcard}>
             <Card className={styles.card} mb={2} mt={5} width="400px">
@@ -14,8 +18,8 @@ export default function DrinkCard({ name, quantity, imageUrl }) {
                 <Text className={styles.text}>Quantity: {quantity}</Text>
             </Card>
             <div className={styles.buttons}>
+                <Button onClick={() => navigate('..')}>Go back</Button>
                 <Button>Update</Button>
-                <Button>Go back</Button>
             </div>
         </div>
     )

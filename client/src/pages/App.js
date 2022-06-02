@@ -19,7 +19,7 @@ function App() {
 
   return (
     <Page className={styles.home}>
-      <SearchBar />
+      <SearchBar drinks={drinks} cocktails={cocktails} />
       <div className={styles.content}>
         <List bevType='drinks' beverages={drinks}></List>
         <List bevType='cocktails' beverages={cocktails}></List>
