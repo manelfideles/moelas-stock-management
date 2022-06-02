@@ -1,12 +1,12 @@
 import React from 'react';
-import edit from '../../assets/icons/edit.svg';
 import trash from '../../assets/icons/trash.svg';
 import styles from './ListItem.module.css';
 
 import { Link } from 'react-router-dom';
 import { formatBeverageName } from '../../utils';
 
-export default function ListItem({ info }) {
+
+export default function ListItem({ info, removeItem }) {
 
     return (
         <div className={styles.item}>
@@ -20,15 +20,7 @@ export default function ListItem({ info }) {
                 </Link>
             </span>
             <div className={styles.icons}>
-                <button className={styles.actionBtn}>
-                    <img
-                        src={edit}
-                        height='25px'
-                        width='25px'
-                        alt="edit-btn"
-                    />
-                </button>
-                <button className={styles.actionBtn}>
+                <button className={styles.actionBtn} onClick={() => removeItem(info.name)}>
                     <img
                         src={trash}
                         height='20px'
@@ -37,6 +29,6 @@ export default function ListItem({ info }) {
                     />
                 </button>
             </div>
-        </div>
+        </div >
     )
 }
