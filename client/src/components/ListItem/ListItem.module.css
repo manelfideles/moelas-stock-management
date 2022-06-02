@@ -3,15 +3,27 @@
     align-items: center;
     width: 20em;
     justify-content: space-between;
+    padding: 0.5em 0;
 }
 
 .actionBtn {
     border: none;
-    background-color: none;
+    background-color: transparent;
+    padding: 0;
+}
+
+.actionBtn>img {
+    padding: 0;
 }
 
 .actionBtn:hover {
     cursor: pointer;
+}
+
+.icons {
+    display: flex;
+    align-items: center;
+    gap: 1em;
 }
 
 .link {

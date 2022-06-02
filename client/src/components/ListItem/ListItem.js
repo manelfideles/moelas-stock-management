@@ -20,7 +20,7 @@ export default function ListItem({ info }) {
                 </Link>
             </span>
             <div className={styles.icons}>
-                <button className={styles.actionBtn} id={styles.editBtn}>
+                <button className={styles.actionBtn}>
                     <img
                         src={edit}
                         height='25px'
@@ -28,10 +28,10 @@ export default function ListItem({ info }) {
                         alt="edit-btn"
                     />
                 </button>
-                <button className={styles.actionBtn} id={styles.trashBtn}>
+                <button className={styles.actionBtn}>
                     <img
                         src={trash}
-                        height='22px'
+                        height='20px'
                         width='25px'
                         alt="trash-btn"
                     />
