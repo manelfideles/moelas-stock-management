@@ -7,7 +7,6 @@ import { Button } from '@geist-ui/core';
 export default function List({ bevType, beverages }) {
 
     const displayBeverages = (bevs, index) => {
-        console.log(bevs);
         let list = bevs.map(bev => <ListItem key={index} info={bev} />)
         return list;
     }
