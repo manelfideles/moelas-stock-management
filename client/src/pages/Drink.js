@@ -19,12 +19,17 @@ export default function Drink() {
             .then(res => setDetails(d => ({ ...res.data })))
     }, [])
 
+    const updateDrink = name => {
+        console.log('Updating', name);
+    }
+
     return (
         <>
             <DrinkCard
                 name={details.name}
                 quantity={details.quantity}
                 imageUrl={details.imageUrl}
+                updateDrink={updateDrink}
             />
         </>
     )

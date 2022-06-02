@@ -25,7 +25,7 @@ function App() {
     axios.post('http://localhost:9000/delete', {
       name: name, beverageType: 'drink'
     }).then(res => {
-      if (res.status == 200) {
+      if (res.status === 200) {
         const newArr = drinks.filter(drink => drink.name !== name);
         setToast({ text: `Successfully deleted ${formatBeverageName(name)}!`, type: 'success' })
         setDrinks(newArr);
@@ -38,7 +38,7 @@ function App() {
     axios.post('http://localhost:9000/delete', {
       name: name, beverageType: 'cocktail'
     }).then(res => {
-      if (res.status == 200) {
+      if (res.status === 200) {
         const newArr = cocktails.filter(ct => ct.name !== name);
         setToast({ text: `Successfully deleted ${formatBeverageName(name)}!`, type: 'success' })
         setCocktails(newArr);

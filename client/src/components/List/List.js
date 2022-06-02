@@ -9,7 +9,6 @@ export default function List({ bevType, beverages, removeItem }) {
     const { visible, setVisible, bindings } = useModal()
 
     const displayBeverages = () => {
-        console.log(beverages);
         let list = beverages.map((bev, index) =>
             <ListItem
                 key={index}
@@ -23,12 +22,12 @@ export default function List({ bevType, beverages, removeItem }) {
         <div className={styles.beverages}>
             <p>{bevType.charAt(0).toUpperCase() + bevType.slice(1)}</p>
             <Button type='success' onClick={() => setVisible(true)}>{`Add new ${bevType.replace('s', '')}`}</Button>
-            <CustomModal
+            {/* <CustomModal
                 bevType={bevType}
                 visible={visible}
                 setVisible={setVisible}
                 bindings={bindings}
-            />
+            /> */}
             <div className={styles.list}>
                 {displayBeverages()}
             </div>

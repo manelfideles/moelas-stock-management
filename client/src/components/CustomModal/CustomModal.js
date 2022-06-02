@@ -6,11 +6,15 @@ import {
 import Modal from '@geist-ui/core/esm/modal';
 import styles from './CustomModal.module.css';
 
-export default function CustomModal({ bevType, visible, setVisible, bindings }) {
+export default function CustomModal({
+    bevType, visible, setVisible,
+    bindings, textContent
+}) {
+
     return (
         <Modal {...bindings}>
-            <Modal.Title>{`Add new ${bevType.replace('s', '')}`}</Modal.Title>
-            {bevType == 'drinks' ?
+            <Modal.Title>{textContent['title']}</Modal.Title>
+            {bevType === 'drinks' ?
                 <Modal.Content>
                     <p className={styles.modalcontent}>
                         {`Insert the desired ${bevType.replace('s', '')}'s name and quantity below then click 'Add'.`}
@@ -21,11 +25,12 @@ export default function CustomModal({ bevType, visible, setVisible, bindings }) 
                         htmlType='number'
                         height={1}
                         width='100%'
-                        placeholder='Drink Quantity' />
+                        placeholder='Drink Quantity'
+                    />
                 </Modal.Content> :
                 <Modal.Content>
                     <p className={styles.modalcontent}>
-                        {`Insert the desired ${bevType.replace('s', '')}'s name and information below then click 'Add'.`}
+                        {textContent['body']}
                     </p>
                     <Note type='warning' className={styles.note}>
                         You can only create a new cocktail based on existing drinks.
