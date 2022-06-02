@@ -18,8 +18,8 @@ export default function DrinkCard({ name, quantity, imageUrl }) {
                 <Text className={styles.text}>Quantity: {quantity}</Text>
             </Card>
             <div className={styles.buttons}>
-                <Button onClick={() => navigate('..')}>Go back</Button>
-                <Button>Update</Button>
+                <Button type='error' onClick={() => navigate('..')}>Go back</Button>
+                <Button type='success'>Update</Button>
             </div>
         </div>
     )

@@ -1,0 +1,14 @@
+.modalcontent,
+.cancel,
+.note {
+    text-align: center;
+}
+
+.cancel,
+.update {
+    font-size: medium;
+}
+
+.cancel {
+    color: red;
+}
