@@ -47,7 +47,8 @@ function App() {
     })
   }
 
-  const addDrink = (name, quantity) => {
+  const addDrink = (params) => {
+    const name = params[0].value, quantity = params[1].value
     console.log(unformatBeverageName(name), quantity);
     axios.post('http://localhost:9000/update/', {
       "beverageType": "drink",
