@@ -16,8 +16,7 @@ export default function DrinkCard({ name, quantity, imageUrl, updateDrink }) {
     const { visible, setVisible, bindings } = useModal();
 
     const handleUpdate = (e) => {
-        e.preventDefault();
-        updateDrink(name);
+        updateDrink(name, e.target[0].value);
     }
 
     return (
@@ -34,7 +33,7 @@ export default function DrinkCard({ name, quantity, imageUrl, updateDrink }) {
             </div>
             <Modal {...bindings}>
                 <form onSubmit={handleUpdate}>
-                    <Modal.Title>Update Cocktail</Modal.Title>
+                    <Modal.Title>Update Drink</Modal.Title>
                     <Modal.Content className={styles.content}>
                         <p>Select the new desired amounts and then press 'Ok'</p>
                     </Modal.Content>
