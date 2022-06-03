@@ -94,7 +94,7 @@ export default function List({ bevType, beverages, removeItem, addItem }) {
         return list;
     }
 
-    const add = (e) => { e.preventDefault(); addItem(e.target) }
+    const add = (e) => { addItem(e.target) }
 
     return (
         <div className={styles.beverages}>

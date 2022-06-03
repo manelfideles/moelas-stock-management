@@ -31,27 +31,30 @@ router.post('/update', async (req, res, next) => {
 
   if (beverageType == 'drink') {
     if (data['imageUrl'] !== '') {
-      console.log(data);
-      /* const blob = bucket.file(data['imageUrl'])
-      console.log(blob);
-      const slug = blob.name;
-      const publicUrl = `https://storage.googleapis.com/moelas-stock-management.appspot.com/${slug}`;
-      const blobStream = blob.createWriteStream({ resumable: false })
-      blobStream.on('finish', async data => await bucket.file(slug).makePublic())
-      response = await docRef.set({
-        'quantity': parseInt(data['quantity']),
-        'imageUrl': data['imageUrl'] ? publicUrl : ''
-      }, { merge: true })
-      blobStream.end(); */
+      // const blob = bucket.file(data['imageUrl'])
+      // console.log(blob);
+      // const slug = blob.name;
+      // const publicUrl = `https://storage.googleapis.com/moelas-stock-management.appspot.com/${slug}`;
+      // const blobStream = blob.createWriteStream({ resumable: false })
+      // blobStream.on('finish', async data => await bucket.file(slug).makePublic())
+      //response = await docRef.set({
+      //  'quantity': parseInt(data['quantity']),
+      //  'imageUrl': data['imageUrl'] ? publicUrl : ''
+      //}, { merge: true })
+      // blobStream.end();
     }
+    response = await docRef.set({
+      'quantity': parseInt(data['quantity']),
+      'imageUrl': ''
+    }, { merge: true })
   }
-  /* else if (beverageType == 'cocktail')
+  else if (beverageType == 'cocktail')
     response = await docRef.set(data['drinks'])
 
   if (response.writeTime) res.status(200).send(
     `Successfully added ${data['name']} to your ${beverageType} stock!`
   )
-  else res.status(500).send('Something went wrong!'); */
+  else res.status(500).send('Something went wrong!');
 });
 
 /* POST delete drink/cocktail */
