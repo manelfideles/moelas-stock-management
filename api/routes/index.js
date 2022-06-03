@@ -1,7 +1,8 @@
-const { db, storage } = require('../firebase-config');
+const { db, bucket } = require('../firebase-config');
 var express = require('express');
 var router = express.Router();
-const { getDrinkList } = require('../utils')
+const { getDrinkList } = require('../utils');
+const { v4 } = require('uuid');
 
 /* GET home page. */
 router.get('/', (req, res, next) => {
@@ -29,18 +30,28 @@ router.post('/update', async (req, res, next) => {
   let response;
 
   if (beverageType == 'drink') {
-    response = await docRef.set({
-      'quantity': parseInt(data['quantity']),
-      'imageUrl': data['imageUrl'],
-    }, { merge: true })
+    if (data['imageUrl'] !== '') {
+      console.log(data);
+      /* const blob = bucket.file(data['imageUrl'])
+      console.log(blob);
+      const slug = blob.name;
+      const publicUrl = `https://storage.googleapis.com/moelas-stock-management.appspot.com/${slug}`;
+      const blobStream = blob.createWriteStream({ resumable: false })
+      blobStream.on('finish', async data => await bucket.file(slug).makePublic())
+      response = await docRef.set({
+        'quantity': parseInt(data['quantity']),
+        'imageUrl': data['imageUrl'] ? publicUrl : ''
+      }, { merge: true })
+      blobStream.end(); */
+    }
   }
-  else if (beverageType == 'cocktail')
+  /* else if (beverageType == 'cocktail')
     response = await docRef.set(data['drinks'])
 
   if (response.writeTime) res.status(200).send(
     `Successfully added ${data['name']} to your ${beverageType} stock!`
   )
-  else res.status(500).send('Something went wrong!');
+  else res.status(500).send('Something went wrong!'); */
 });
 
 /* POST delete drink/cocktail */
