@@ -4,7 +4,7 @@ import { Page, useToasts } from '@geist-ui/core';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import styles from '../styles/App.module.css';
-import { formatBeverageName } from '../utils';
+import { unformatBeverageName, formatBeverageName } from '../utils';
 
 
 function App() {
@@ -47,6 +47,19 @@ function App() {
     })
   }
 
+  const addDrink = (name, quantity) => {
+    console.log(unformatBeverageName(name), quantity);
+    axios.post('http://localhost:9000/update/', {
+      "beverageType": "drink",
+      "name": unformatBeverageName(name),
+      "quantity": quantity,
+      "imageUrl": ""
+    }).then(res => {
+      if (res.status === 200) setToast({ text: `Successfully added ${formatBeverageName(name)}!`, type: 'success' })
+      else setToast({ text: `Something went wrong. Try again later.`, type: 'error' })
+    })
+  }
+
   return (
     <Page className={styles.home}>
       <SearchBar drinks={drinks} cocktails={cocktails} />
@@ -55,6 +68,7 @@ function App() {
           bevType='drinks'
           beverages={drinks}
           removeItem={removeDrink}
+          addItem={addDrink}
         />
         <List
           bevType='cocktails'
