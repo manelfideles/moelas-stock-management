@@ -15,6 +15,8 @@
   </p>
 </div>
 
+<br />
+
 <!-- TABLE OF CONTENTS -->
 <details>
   <summary>Table of Contents</summary>
@@ -37,8 +39,6 @@
   </ol>
 </details>
 
-<br />
-
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
@@ -50,7 +50,7 @@ The aim of this challenge is to build a simple web platform that helps the user 
 
 * [React.js](https://reactjs.org/)
 * [Express.js](https://expressjs.com/)
-* [Firebase](https://firebase.google.com/)
+* [Firestore from Firebase](https://firebase.google.com/products/firestore?gclid=Cj0KCQjwheyUBhD-ARIsAHJNM-PKL41lCqefGfyBSCHP17KnNnftHzygVV71sjHA2ZZnNlMDAEf4eWkaAg2hEALw_wcB&gclsrc=aw.ds)
 
 <!-- GETTING STARTED -->
 ## Getting Started
