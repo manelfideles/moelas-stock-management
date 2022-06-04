@@ -32,12 +32,12 @@
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#roadmap">Features</a></li>
     <li><a href="#contact">Contact</a></li>
   </ol>
 </details>
 
-
+<br />
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
@@ -46,19 +46,11 @@ In this challenge, I was expected to implement a web platform to manage "O MOELA
 "O MOELAS" it's a bar with a cozy atmosphere that has been working with the academic community since 1974. It's known for its extensive list of shots and cocktails with inviting prices.
 The aim of this challenge is to build a simple web platform that helps the user manage the bar.
 
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
 ### Built With
 
 * [React.js](https://reactjs.org/)
 * [Express.js](https://expressjs.com/)
 * [Firebase](https://firebase.google.com/)
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
 
 <!-- GETTING STARTED -->
 ## Getting Started
@@ -98,11 +90,8 @@ This is an example of how to list things you need to use the software and how to
    cd client && npm start
    ```
 
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
 <!-- ROADMAP -->
-## Roadmap
+## Features
 
 - [X] List existing drinks/cocktails
 - [X] Show an existing drink/cocktail
@@ -114,13 +103,12 @@ This is an example of how to list things you need to use the software and how to
 - [X] Sell cocktails
     - [X] (Extra) A cocktail cannot be sold if any of if its drinks run out.
 
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - manuelfideles77@gmail.com@email_client.com
+Manuel Fideles
+Email: manuelfideles77@gmail.com
+Linkedin: [https://www.linkedin.com/in/manuel-fideles/](manuel-fideles)
 
 Project Link: [https://github.com/manelfideles/moelas-stock-management](https://github.com/manelfideles/moelas-stock-management)
 
