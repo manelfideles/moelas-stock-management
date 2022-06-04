@@ -4,7 +4,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/manelfideles/moelas-stock-management">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="./banner.jpg" alt="Logo" width="80" height="80">
   </a>
 
 <h3 align="center">RedLight Summer Internship 2022 - Dev Challenge</h3>
