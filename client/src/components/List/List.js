@@ -5,6 +5,7 @@ import { Button, useModal } from '@geist-ui/core';
 import DrinkModal from '../DrinkModal';
 import CocktailModal from '../CocktailModal';
 import { useState } from 'react';
+import { unformatBeverageName } from '../../utils';
 
 export default function List({ bevType, beverages, removeItem, addItem }) {
 
@@ -14,7 +15,18 @@ export default function List({ bevType, beverages, removeItem, addItem }) {
     ]);
 
     const add = (e) => {
-        bevType === 'drinks' ? addItem(e.target) : addItem(inputFields)
+        if (bevType === 'drinks')
+            addItem(e.target)
+        else {
+            let updatedFields = inputFields.map(drink => {
+                return { [unformatBeverageName(drink.drink)]: parseInt(drink.quantity) }
+            })
+            addItem({
+                'beverageType': 'cocktail',
+                'name': unformatBeverageName(e.target[0].value),
+                'drinks': updatedFields
+            })
+        }
     }
 
     const handleFormChange = (index, event) => {

@@ -63,8 +63,12 @@ function App() {
   }
 
   const addCocktail = (params) => {
-    console.log(params);
-    // params.map(div => console.log(div.value))
+    console.log('params: ', params);
+    axios.post('http://localhost:9000/update/', params)
+      .then(res => {
+        if (res.status === 200) setToast({ text: `Successfully added ${formatBeverageName(params['name'])}!`, type: 'success' })
+        else setToast({ text: `Something went wrong. Try again later.`, type: 'error' })
+      })
   }
 
 
