@@ -24,3 +24,7 @@
 .btns {
     display: flex;
 }
+
+.required {
+    color: red;
+}

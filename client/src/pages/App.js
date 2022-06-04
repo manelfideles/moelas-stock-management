@@ -63,7 +63,6 @@ function App() {
   }
 
   const addCocktail = (params) => {
-    console.log('params: ', params);
     axios.post('http://localhost:9000/update/', params)
       .then(res => {
         if (res.status === 200) setToast({ text: `Successfully added ${formatBeverageName(params['name'])}!`, type: 'success' })

@@ -3,7 +3,7 @@ import { unformatBeverageName, formatBeverageName } from '../../utils';
 import styles from './CocktailCard.module.css';
 import { Card, Text, Button, Input } from '@geist-ui/core';
 import { useNavigate } from 'react-router-dom';
-import { useModal, Spacer } from '@geist-ui/core';
+import { useModal, Spacer, Note } from '@geist-ui/core';
 import Modal from '@geist-ui/core/esm/modal';
 import axios from 'axios';
 
@@ -53,14 +53,25 @@ export default function CocktailCard({ name, drinks }) {
                         <p>Select the new desired amounts and then press 'Ok'</p>
                     </Modal.Content>
                     <Spacer h={1} />
+                    <Note
+                        label={false}
+                        type='error'
+                        className={styles.note}
+                    >
+                        * required fields
+                    </Note>
                     {drinks.map(drink => {
                         return <>
-                            <Text>{`New ${formatBeverageName(drink['name'])} Quantity`}</Text>
+                            <Text>
+                                <span className={styles.required}>* </span>
+                                {`New ${formatBeverageName(drink['name'])} Quantity`}
+                            </Text>
                             <Input
                                 htmlType='number'
                                 height={1}
                                 width='100%'
-                                placeholder={`e.g. ${drink['quantity']}`}
+                                placeholder={`e.g ${drink['quantity']}`}
+                                required
                             />
                             <Spacer h={0.5} />
                         </>

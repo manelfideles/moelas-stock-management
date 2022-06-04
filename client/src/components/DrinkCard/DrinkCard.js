@@ -5,7 +5,7 @@ import bottle from '../../assets/icons/bottle.svg';
 import {
     Card, Image, Text,
     Button, useModal, Spacer,
-    Input
+    Input, Note
 } from '@geist-ui/core';
 import { useNavigate } from 'react-router-dom';
 import Modal from '@geist-ui/core/esm/modal';
@@ -37,13 +37,24 @@ export default function DrinkCard({ name, quantity, imageUrl, updateDrink }) {
                     <Modal.Content className={styles.content}>
                         <p>Select the new desired amounts and then press 'Ok'</p>
                     </Modal.Content>
+                    <Note
+                        label={false}
+                        type='error'
+                        className={styles.note}
+                    >
+                        * required fields
+                    </Note>
                     <Spacer h={1} />
-                    <Text>{`New ${formatBeverageName(name)} Quantity`}</Text>
+                    <Text>
+                        <span className={styles.required}>* </span>
+                        {`New ${formatBeverageName(name)} Quantity`}
+                    </Text>
                     <Input
                         htmlType='number'
                         height={1}
                         width='100%'
                         placeholder={`e.g. 7`}
+                        required
                     />
                     <Spacer h={0.5} />
                     <div className={styles.btns}>
