@@ -1,0 +1,11 @@
+.btns {
+    display: flex;
+}
+
+.content {
+    text-align: center;
+}
+
+.required {
+    color: red;
+}

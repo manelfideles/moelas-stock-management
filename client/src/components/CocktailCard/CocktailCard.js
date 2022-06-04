@@ -1,12 +1,13 @@
 import React from 'react'
-import { formatBeverageName } from '../../utils';
+import { unformatBeverageName, formatBeverageName } from '../../utils';
 import styles from './CocktailCard.module.css';
 import { Card, Text, Button, Input } from '@geist-ui/core';
 import { useNavigate } from 'react-router-dom';
 import { useModal, Spacer } from '@geist-ui/core';
 import Modal from '@geist-ui/core/esm/modal';
+import axios from 'axios';
 
-export default function CocktailCard({ name, drinks, updateCocktail }) {
+export default function CocktailCard({ name, drinks }) {
 
     const navigate = useNavigate();
     const { visible, setVisible, bindings } = useModal();
@@ -24,8 +25,15 @@ export default function CocktailCard({ name, drinks, updateCocktail }) {
     }
 
     const handleUpdate = (e) => {
-        e.preventDefault();
-        console.log('Submit')
+        let updatedDrinks = drinks.map((drink, index) => {
+            return { [drink.name]: parseInt(e.target[index].value) }
+        })
+        console.log(updatedDrinks);
+        axios.post('http://localhost:9000/update', {
+            "beverageType": 'cocktail',
+            "name": unformatBeverageName(name),
+            "drinks": updatedDrinks,
+        })
     }
 
     return (

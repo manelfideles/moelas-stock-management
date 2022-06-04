@@ -33,7 +33,7 @@ export default function SearchBar({ drinks, cocktails }) {
     }
 
     const selectHandler = (value) => {
-        const foundBev = options.find(elem => elem.value == value)
+        const foundBev = options.find(elem => elem.value === value)
         if (foundBev) navigate(`/${foundBev.bevType}/${unformatBeverageName(value)}`);
     }
 

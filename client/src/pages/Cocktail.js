@@ -19,16 +19,11 @@ export default function Cocktail() {
             .then(res => { setDetails(d => ({ ...res.data })) })
     }, [])
 
-    const updateCocktail = name => {
-        console.log('Updating', name);
-    }
-
     return (
         <>
             <CocktailCard
                 name={details.name}
                 drinks={details.drinks}
-                updateCocktail={updateCocktail}
             />
         </>
     )

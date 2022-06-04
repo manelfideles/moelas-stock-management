@@ -27,7 +27,7 @@ router.post('/update', async (req, res, next) => {
   const docRef = db
     .collection(beverageType + 's')
     .doc(data['name']);
-  let response;
+  var response;
 
   if (beverageType == 'drink') {
     if (data['imageUrl'] !== '') {
@@ -48,13 +48,20 @@ router.post('/update', async (req, res, next) => {
       'imageUrl': ''
     }, { merge: true })
   }
-  else if (beverageType == 'cocktail')
-    response = await docRef.set(data['drinks'])
+  else if (beverageType == 'cocktail') {
+    data['drinks'].map(async drink => {
+      await docRef.set(drink, { merge: true })
+    })
+  }
 
-  if (response.writeTime) res.status(200).send(
+  res.status(200).send(
+    `Successfully updated your ${beverageType} stock!`
+  )
+
+  /* if (response.writeTime) res.status(200).send(
     `Successfully added ${data['name']} to your ${beverageType} stock!`
   )
-  else res.status(500).send('Something went wrong!');
+  else res.status(500).send('Something went wrong!'); */
 });
 
 /* POST delete drink/cocktail */

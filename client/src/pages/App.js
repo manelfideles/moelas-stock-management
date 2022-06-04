@@ -62,6 +62,12 @@ function App() {
     })
   }
 
+  const addCocktail = (params) => {
+    console.log(params);
+    // params.map(div => console.log(div.value))
+  }
+
+
   return (
     <Page className={styles.home}>
       <SearchBar drinks={drinks} cocktails={cocktails} />
@@ -76,6 +82,7 @@ function App() {
           bevType='cocktails'
           beverages={cocktails}
           removeItem={removeCocktail}
+          addItem={addCocktail}
         />
       </div>
     </Page>
