@@ -23,6 +23,7 @@ router.get('/', (req, res, next) => {
 } */
 router.post('/update', async (req, res, next) => {
   const data = req.body;
+  console.log('here: ', data);
   const { beverageType } = data;
   const docRef = db
     .collection(beverageType + 's')
@@ -30,22 +31,9 @@ router.post('/update', async (req, res, next) => {
   var response;
 
   if (beverageType == 'drink') {
-    if (data['imageUrl'] !== '') {
-      // const blob = bucket.file(data['imageUrl'])
-      // console.log(blob);
-      // const slug = blob.name;
-      // const publicUrl = `https://storage.googleapis.com/moelas-stock-management.appspot.com/${slug}`;
-      // const blobStream = blob.createWriteStream({ resumable: false })
-      // blobStream.on('finish', async data => await bucket.file(slug).makePublic())
-      //response = await docRef.set({
-      //  'quantity': parseInt(data['quantity']),
-      //  'imageUrl': data['imageUrl'] ? publicUrl : ''
-      //}, { merge: true })
-      // blobStream.end();
-    }
     response = await docRef.set({
       'quantity': parseInt(data['quantity']),
-      'imageUrl': ''
+      'imageUrl': data['imageUrl'] ? data['imageUrl'] : ''
     }, { merge: true })
   }
   else if (beverageType == 'cocktail') {
