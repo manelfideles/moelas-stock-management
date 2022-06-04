@@ -6,11 +6,13 @@ import axios from 'axios';
 import styles from '../styles/App.module.css';
 import { unformatBeverageName, formatBeverageName } from '../utils';
 
+
 function App() {
 
   const [drinks, setDrinks] = useState([]);
   const [cocktails, setCocktails] = useState([]);
   const { setToast } = useToasts();
+  const [imageBase64, setImageBase64] = useState('');
 
 
   useEffect(() => {
@@ -46,20 +48,25 @@ function App() {
     })
   }
 
-  const addDrink = (params) => {
+  const addDrink = (params, image) => {
     const name = params[0].value,
       quantity = params[1].value
-    // let image;
-    // if (params.length > 2) image = params[2].files[0];
-    axios.post('http://localhost:9000/update/', {
+
+    const data = {
       "beverageType": 'drink',
       "name": unformatBeverageName(name),
-      "quantity": quantity,
-      "imageUrl": ''
-    }).then(res => {
-      if (res.status === 200) setToast({ text: `Successfully added ${formatBeverageName(name)}!`, type: 'success' })
-      else setToast({ text: `Something went wrong. Try again later.`, type: 'error' })
-    })
+      "quantity": parseInt(quantity),
+      "imageUrl": image
+    }
+
+    console.log('DATA: ', data);
+
+    axios.post('http://localhost:9000/update', data)
+      .then(res => {
+        console.log('Done!');
+        if (res.status === 200) setToast({ text: `Successfully added ${formatBeverageName(name)}!`, type: 'success' })
+        else setToast({ text: `Something went wrong. Try again later.`, type: 'error' })
+      })
   }
 
   const addCocktail = (params) => {
@@ -80,6 +87,8 @@ function App() {
           beverages={drinks}
           removeItem={removeDrink}
           addItem={addDrink}
+          imageBase64={imageBase64}
+          setImageBase64={setImageBase64}
         />
         <List
           bevType='cocktails'

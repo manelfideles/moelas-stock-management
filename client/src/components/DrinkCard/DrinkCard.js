@@ -22,6 +22,7 @@ export default function DrinkCard({ name, quantity, imageUrl, updateDrink }) {
     return (
         <div className={styles.drinkcard}>
             <Card className={styles.card} mb={2} mt={5} width="400px">
+                {console.log(imageUrl)}
                 <Image mt={2} src={imageUrl !== '' ? imageUrl : bottle}
                     height="200px" width="200px" draggable={false} />
                 <Text h3 mb={0} className={styles.text}>{formatBeverageName(name)}</Text>

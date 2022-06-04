@@ -7,7 +7,12 @@ import CocktailModal from '../CocktailModal';
 import { useState } from 'react';
 import { unformatBeverageName } from '../../utils';
 
-export default function List({ bevType, beverages, removeItem, addItem }) {
+export default function List(
+    {
+        bevType, beverages, removeItem,
+        addItem, setImageBase64, imageBase64
+    }
+) {
 
     const { visible, setVisible, bindings } = useModal();
     const [inputFields, setInputFields] = useState([
@@ -15,8 +20,7 @@ export default function List({ bevType, beverages, removeItem, addItem }) {
     ]);
 
     const add = (e) => {
-        if (bevType === 'drinks')
-            addItem(e.target)
+        if (bevType === 'drinks') { e.preventDefault(); addItem(e.target, imageBase64) }
         else {
             let updatedFields = inputFields.map(drink => {
                 return { [unformatBeverageName(drink.drink)]: parseInt(drink.quantity) }
@@ -43,6 +47,7 @@ export default function List({ bevType, beverages, removeItem, addItem }) {
         let list = beverages.map((bev, index) =>
             <ListItem
                 key={index}
+                bevType={bevType}
                 info={bev}
                 removeItem={removeItem}
             />)
@@ -59,6 +64,8 @@ export default function List({ bevType, beverages, removeItem, addItem }) {
                     add={add}
                     bevType={bevType}
                     setVisible={setVisible}
+                    imageBase64={imageBase64}
+                    setImageBase64={setImageBase64}
                 /> :
                 <CocktailModal
                     bindings={bindings}

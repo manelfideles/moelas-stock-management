@@ -6,13 +6,13 @@ import { Link } from 'react-router-dom';
 import { formatBeverageName } from '../../utils';
 
 
-export default function ListItem({ info, removeItem }) {
+export default function ListItem({ bevType, info, removeItem }) {
 
     return (
         <div className={styles.item}>
             <span>
                 <Link className={styles.link} to={
-                    info.imageUrl !== undefined ?
+                    bevType === 'drinks' ?
                         `/drinks/${info.name}` :
                         `/cocktails/${info.name}`
                 }>

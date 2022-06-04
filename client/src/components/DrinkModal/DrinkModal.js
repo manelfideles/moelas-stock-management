@@ -3,7 +3,8 @@ import Modal from "@geist-ui/core/esm/modal";
 import { Note, Spacer, Text, Input } from "@geist-ui/core";
 import styles from './DrinkModal.module.css';
 
-export default function DrinkModal({ bindings, add, bevType, setVisible }) {
+
+export default function DrinkModal({ bindings, add, bevType, setVisible, setImageBase64 }) {
 
     return <Modal {...bindings}>
         <form onSubmit={add}>
@@ -44,6 +45,12 @@ export default function DrinkModal({ bindings, add, bevType, setVisible }) {
                 accept="image/png, image/jpeg"
                 height={1}
                 width='100%'
+                onChange={(e) => {
+                    var reader = new FileReader()
+                    reader.readAsDataURL(e.target.files[0]);
+                    reader.onload = () => { setImageBase64(reader.result) };
+                    reader.onerror = error => console.log("Error: ", error);
+                }}
             />
             <Spacer h={0.5} />
             <div className={styles.btns}>
