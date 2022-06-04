@@ -106,8 +106,8 @@ This is an example of how to list things you need to use the software and how to
 <!-- CONTACT -->
 ## Contact
 
-Manuel Fideles
-Email: manuelfideles77@gmail.com
+Author: Manuel Fideles <br />
+Email: manuelfideles77@gmail.com <br />
 Linkedin: [https://www.linkedin.com/in/manuel-fideles/](manuel-fideles)
 
 Project Link: [https://github.com/manelfideles/moelas-stock-management](https://github.com/manelfideles/moelas-stock-management)
