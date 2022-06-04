@@ -113,18 +113,19 @@ router.post('/sell', async (req, res, next) => {
     const cocktailPossible = drinkStock.every(hasEnoughStock)
     // not enough stock to make this cocktail
     if (!cocktailPossible)
-      res.status(500).send(
+      res.status(400).send(
         'You do not have enough drink stock to make this cocktail.'
       )
     else {
-      let response;
+      var response;
       drinkList.forEach(async (drink, index) => {
         response = await db
           .collection('drinks')
           .doc(drink['name'])
           .set({ 'quantity': parseInt(drinkStock[index]['quantity']) - drink['quantity'] }, { merge: true })
       })
-      res.status(200).send(`Successfully sold one ${data['name']}!`)
+      if (res.writeTime) res.status(200).send(`Successfully sold one ${data['name']}!`)
+      else res.status(500).send('Something went wrong!');
     }
   }
 })

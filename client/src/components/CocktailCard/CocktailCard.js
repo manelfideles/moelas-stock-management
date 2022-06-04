@@ -1,7 +1,7 @@
 import React from 'react'
 import { unformatBeverageName, formatBeverageName } from '../../utils';
 import styles from './CocktailCard.module.css';
-import { Card, Text, Button, Input } from '@geist-ui/core';
+import { Card, Text, Button, Input, useToasts } from '@geist-ui/core';
 import { useNavigate } from 'react-router-dom';
 import { useModal, Spacer, Note } from '@geist-ui/core';
 import Modal from '@geist-ui/core/esm/modal';
@@ -11,6 +11,8 @@ export default function CocktailCard({ name, drinks }) {
 
     const navigate = useNavigate();
     const { visible, setVisible, bindings } = useModal();
+    const { setToast } = useToasts();
+
 
     const displayDrinks = () => {
         let drinkList = drinks
@@ -36,6 +38,20 @@ export default function CocktailCard({ name, drinks }) {
         })
     }
 
+    const sellCocktail = () => {
+        const cocktailData = {
+            "beverageType": "cocktail",
+            "name": name
+        }
+        axios.post('http://localhost:9000/sell', cocktailData)
+            .then(res => {
+                if (res.status === 404) setToast({ text: `${formatBeverageName(name)} does not exist!`, type: 'error' })
+                else if (res.status === 400) setToast({ text: `You do not have enough drink stock to make a ${formatBeverageName(name)}!`, type: 'error' })
+                else if (res.status === 500) setToast({ text: `Something went wrong! Try again later.`, type: 'error' })
+                else if (res.status === 200) setToast({ text: `Successfully sold one ${formatBeverageName(name)}!`, type: 'success' })
+            })
+    }
+
     return (
         <div className={styles.cocktailcard}>
             <Card className={styles.card} mb={2} mt={5} pb={1} width="400px">
@@ -46,6 +62,8 @@ export default function CocktailCard({ name, drinks }) {
                 <Button type='error' onClick={() => navigate('..')}>Go back</Button>
                 <Button type='success' onClick={() => setVisible(true)}>Update</Button>
             </div>
+            <Spacer h={1} />
+            <Button width='100%' type='secondary' onClick={sellCocktail}>Sell</Button>
             <Modal {...bindings}>
                 <form onSubmit={handleUpdate}>
                     <Modal.Title>Update Cocktail</Modal.Title>
