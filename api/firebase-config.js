@@ -1,5 +1,5 @@
 // secret key
-const serviceAccount = require('./moelas-stock-management-firebase-adminsdk-rmdzn-87be9f3353.json');
+const serviceAccount = require('your-firebase-key-here.json');
 
 const { initializeApp, cert } = require('firebase-admin/app');
 const { getFirestore } = require('firebase-admin/firestore');
