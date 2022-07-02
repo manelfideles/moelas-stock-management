@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import CocktailCard from '../components/CocktailCard';
+import { BASE_URL } from '../utils';
 
 export default function Cocktail() {
 
@@ -15,7 +16,7 @@ export default function Cocktail() {
 
     useEffect(() => {
         axios
-            .get(`http://localhost:9000/cocktails/${params.cocktailName}`)
+            .get(`${BASE_URL}/cocktails/${params.cocktailName}`)
             .then(res => { setDetails(d => ({ ...res.data })) })
     }, [])
 

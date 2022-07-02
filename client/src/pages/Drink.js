@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import DrinkCard from '../components/DrinkCard';
 import { useToasts } from '@geist-ui/core';
-import { formatBeverageName } from '../utils';
+import { BASE_URL, formatBeverageName } from '../utils';
 
 export default function Drink() {
 
@@ -18,7 +18,7 @@ export default function Drink() {
 
     useEffect(() => {
         axios
-            .get(`http://localhost:9000/drinks/${params.drinkName}`)
+            .get(`${BASE_URL}/drinks/${params.drinkName}`)
             .then(res => setDetails(d => ({ ...res.data })))
     }, [])
 
@@ -30,7 +30,7 @@ export default function Drink() {
             "quantity": parseInt(quantity),
             "imageUrl": ""
         }
-        axios.post('http://localhost:9000/update', updatedData)
+        axios.post(`${BASE_URL}/update`, updatedData)
             .then(res => {
                 if (res.status === 200)
                     setToast({ text: `Successfully updated ${formatBeverageName(name)}'s stock amount!`, type: 'success' })

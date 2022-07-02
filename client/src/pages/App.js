@@ -4,7 +4,7 @@ import { Page, useToasts } from '@geist-ui/core';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import styles from '../styles/App.module.css';
-import { unformatBeverageName, formatBeverageName } from '../utils';
+import { BASE_URL, unformatBeverageName, formatBeverageName } from '../utils';
 
 
 function App() {
@@ -23,7 +23,7 @@ function App() {
   }, [])
 
   const removeDrink = (name) => {
-    axios.post('http://localhost:9000/delete', {
+    axios.post(`${BASE_URL}/delete`, {
       name: name, beverageType: 'drink'
     }).then(res => {
       if (res.status === 200) {
@@ -36,7 +36,7 @@ function App() {
   }
 
   const removeCocktail = (name) => {
-    axios.post('http://localhost:9000/delete', {
+    axios.post(`${BASE_URL}/delete`, {
       name: name, beverageType: 'cocktail'
     }).then(res => {
       if (res.status === 200) {
@@ -61,7 +61,7 @@ function App() {
 
     console.log('DATA: ', data);
 
-    axios.post('http://localhost:9000/update', data)
+    axios.post(`${BASE_URL}/update`, data)
       .then(res => {
         console.log('Done!');
         if (res.status === 200) setToast({ text: `Successfully added ${formatBeverageName(name)}!`, type: 'success' })
@@ -70,7 +70,7 @@ function App() {
   }
 
   const addCocktail = (params) => {
-    axios.post('http://localhost:9000/update/', params)
+    axios.post(`${BASE_URL}/update`, params)
       .then(res => {
         if (res.status === 200) setToast({ text: `Successfully added ${formatBeverageName(params['name'])}!`, type: 'success' })
         else setToast({ text: `Something went wrong. Try again later.`, type: 'error' })

@@ -11,3 +11,5 @@ export function unformatBeverageName(bevName) {
         bev[i] = bev[i].toLowerCase()
     return bev.join('-');
 }
+
+export const BASE_URL = 'http://localhost:9000';

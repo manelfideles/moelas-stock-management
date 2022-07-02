@@ -1,5 +1,5 @@
 import React from 'react'
-import { unformatBeverageName, formatBeverageName } from '../../utils';
+import { BASE_URL, unformatBeverageName, formatBeverageName } from '../../utils';
 import styles from './CocktailCard.module.css';
 import { Card, Text, Button, Input, useToasts } from '@geist-ui/core';
 import { useNavigate } from 'react-router-dom';
@@ -43,7 +43,7 @@ export default function CocktailCard({ name, drinks }) {
             "beverageType": "cocktail",
             "name": name
         }
-        axios.post('http://localhost:9000/sell', cocktailData)
+        axios.post(`${BASE_URL}/sell`, cocktailData)
             .then(res => {
                 if (res.status === 404) setToast({ text: `${formatBeverageName(name)} does not exist!`, type: 'error' })
                 else if (res.status === 400) setToast({ text: `You do not have enough drink stock to make a ${formatBeverageName(name)}!`, type: 'error' })
